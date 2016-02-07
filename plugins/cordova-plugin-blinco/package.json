@@ -1,0 +1,32 @@
+{
+    "name": "cordova-blinco-plugin",
+    "description": "Blinco Framework for Cordova",
+    "version": "0.0.2",
+    "homepage": "https://github.com/zerbfra/blinco-cordova",
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/zerbfra/blinco-cordova"
+    },
+    "bugs": {
+        "url": "https://github.com/zerbfra/blinco-cordova/issues"
+    },
+    "cordova": {
+        "id": "cordova-blinco-plugin",
+        "platforms": [
+            "ios"
+        ]
+    },
+    "keywords": [
+        "ecosystem:cordova",
+        "ecosystem:phonegap",
+        "cordova-ios"
+    ],
+    "engines": [
+        {
+            "name": "cordova",
+            "version": ">=3.0.0"
+        }
+    ],
+    "author": "Zerbinati Francesco",
+    "license": "MIT"
+}

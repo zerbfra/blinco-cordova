@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        id="cordova-plugin-blinco"
+        version="0.2">
+
+    <name>Blinco Cordova Plugin</name>
+    <author>Zerbinati Francesco</author>
+
+    <description>
+        This plugin allows your application to handle the iOS Blinco Framework.
+    </description>
+
+    <license>MIT</license>
+
+    <js-module src="www/blinco.js" name="Blinco">
+        <clobbers target="Blinco" />
+    </js-module>
+
+    <js-module src="www/blinco.comm.js" name="BlincoComm">
+        <clobbers target="BlincoComm" />
+    </js-module>
+
+    <engines>
+        <engine name="cordova" version=">=3.0.0" />
+    </engines>
+
+    <!-- ios -->
+    <platform name="ios">
+
+        <config-file target="config.xml" parent="/*">
+            <feature name="Blinco">
+                <param name="ios-package" value="BLPlugin"/>
+            </feature>
+            <feature name="BlincoComm">
+                <param name="ios-package" value="BLCommPlugin"/>
+            </feature>
+        </config-file>
+
+
+        <source-file src="src/ios/BLPlugin.m" />
+        <header-file src="src/ios/BLPlugin.h" />
+
+        <source-file src="src/ios/BLCommPlugin.m" />
+        <header-file src="src/ios/BLCommPlugin.h" />
+
+
+        <framework src="CoreLocation.framework" />
+        <framework src="CoreBluetooth.framework" />
+        <framework src="CoreMotion.framework" />
+
+
+        <framework src="src/ios/BlincoKit.framework" custom="true" />
+
+    </platform>
+
+
+</plugin>
