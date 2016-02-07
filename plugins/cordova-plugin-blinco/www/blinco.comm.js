@@ -1,9 +1,8 @@
 var blincopush = {
 
     /**
-    * Init the blinco framework
-    * @param {dictionary} config - the configuration dictionary for the framework
-    * config takes 4 mandatory keys: app_name, app_id, app_secret and ble_service
+    * Listen for blinco notifications
+    * Once started the successCallback will be called every time there's a notification
     */
     listen: function (successCallback, errorCallback) {
 
@@ -11,7 +10,10 @@ var blincopush = {
         cordova.exec(successCallback,errorCallback,"BlincoComm","connect",[ ]);
     },
 
-    /** Start detection of nearby devices, return an array of device objects (use JSON) */
+    /**
+    * Send data to another device
+    * @param {dictionary} data - the payload dictionary to send
+    **/
     send: function (data,successCallback, errorCallback) {
         console.log("info: sending blinco payload");
         cordova.exec(successCallback,errorCallback,"BlincoComm","send",[ data ]);
