@@ -4,7 +4,9 @@
 
 ## Installation
 
-WIP
+- Download and unzip this folder 
+- Navigate to your project folder
+- cordova plugin add /folder/of/the/plugin 
 
 
 ## Supported Platforms
