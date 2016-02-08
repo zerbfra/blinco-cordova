@@ -32,6 +32,8 @@
         var blinco = Blinco.init(cnfg, success, failure);
 ```
 
+You can find and extended example [here](../../www)
+
 ## API
 
 The plugin provides two different APIs in order to achieve different functionalities. 
