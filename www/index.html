@@ -7,22 +7,29 @@
         <meta name="format-detection" content="telephone=no">
         <meta name="msapplication-tap-highlight" content="no">
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
         <link rel="stylesheet" type="text/css" href="css/ratchet.min.css">
         <title>Hello Blinco</title>
     </head>
     <body>
         <header class="bar bar-nav">
-            <h1 class="title">Hello Blinco</h1>
+
         </header>
 
         <div class="content">
+            <h4 style="padding-top:20px"><center>Controls</center></h4>
+            <button class="btn btn-block btn-primary" id="start">Start</button>
+            <button class="btn btn-positive btn-block" id="stop">Stop</button>
+            <button class="btn btn-negative btn-block" id="reset">Reset</button>
+            <br>
+            <button class="btn btn-block" id="listen">Listen</button>
+
+            <h4 style="padding-top:20px"><center>Devices</center></h4>
             <div class="card">
-                <button class="btn btn-block btn-primary" id="start">Start</button>
-                <button class="btn btn-positive btn-block" id="stop">Stop</button>
-                <button class="btn btn-negative btn-block" id="reset">Reset</button>
-                <br>
-                <button class="btn btn-block btn-primary" id="listen">Listen</button>
-                <button class="btn btn-block btn-primary" id="send">Send message</button>
+                <ul class="table-view" id="devices">
+                    <li class="table-view-cell"><i>No devices</i></li>
+                </ul>
+
             </div>
 
         </div>

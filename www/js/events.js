@@ -17,8 +17,20 @@ function initBlinco(callback) {
 }
 
 function startBlinco() {
-    Blinco.start(function(message) {
-        console.log("info: blinco detected devices are -> "+JSON.stringify(message));
+    Blinco.start(function(result) {
+        console.log("info: blinco detected devices are -> "+JSON.stringify(result));
+
+        var html = "";
+
+        result.forEach(function(entry) {
+            html += '<li class="table-view-cell">'+entry["deviceID"]+'<button class="btn btn-primary" data-target="'+entry["deviceID"]+'">Alert</button></li>';
+
+        });
+
+
+        console.log(html);
+        $("#devices").html(html);
+
     }, null);
 }
 
@@ -37,14 +49,17 @@ function resetBlinco() {
 function listenPush() {
     BlincoComm.listen(function(payload) {
         console.log("info: blinco communication received ->"+JSON.stringify(payload));
+        alert(payload["message"]);
     }, null);
 }
 
-function sendPush() {
+function sendPush(target,msg) {
 
-    var payload = {"target":"56b7116327a4b0f604fabfb4",
-                "message":"testing messages"
-               };
+    console.log("info: sending push to "+target);
+
+    var payload = {"target":target,
+                   "message": msg
+                  };
 
     BlincoComm.send(payload,function(message) {
         console.log(message);
@@ -81,11 +96,18 @@ function sendPush() {
 
     });
 
-    $('#send').click(function(){
 
-        sendPush();
+
+    $( "#devices" ).on( "click", "li button", function() {
+        console.log("clicked");
+        var target = $(this).data('target');
+
+        var msg = prompt("Message:", "Ciao!");
+        sendPush(target,msg);
 
     });
+
+
 
 
 
