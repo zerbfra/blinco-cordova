@@ -27,8 +27,6 @@ function startBlinco() {
 
         });
 
-
-        console.log(html);
         $("#devices").html(html);
 
     }, null);
@@ -43,6 +41,7 @@ function stopBlinco() {
 function resetBlinco() {
     Blinco.reset(function(message) {
         console.log("info: blinco resetted");
+        $("#devices").html("No nearby devices");
     }, null);
 }
 
@@ -99,7 +98,7 @@ function sendPush(target,msg) {
 
 
     $( "#devices" ).on( "click", "li button", function() {
-        console.log("clicked");
+
         var target = $(this).data('target');
 
         var msg = prompt("Message:", "Ciao!");

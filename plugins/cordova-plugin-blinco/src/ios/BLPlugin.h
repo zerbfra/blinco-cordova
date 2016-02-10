@@ -12,6 +12,7 @@
 @interface BLPlugin : CDVPlugin
 
 
+@property (nonatomic, copy) NSString *inId;
 @property (nonatomic, copy) NSString *callbackId;
 
 - (void) init:(CDVInvokedUrlCommand*)command;

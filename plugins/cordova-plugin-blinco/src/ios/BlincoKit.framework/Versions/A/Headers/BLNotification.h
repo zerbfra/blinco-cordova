@@ -13,6 +13,8 @@
 
 @interface BLNotification : NSObject
 
+@property BOOL isConnected;
+
 + (BLNotification *) manager;
 
 - (void) connect;

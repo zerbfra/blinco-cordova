@@ -32,7 +32,7 @@
     
     
     // check if blinco was initialized
-    if([Blinco manager].isRunning) {
+    if([Blinco manager].isRunning && [BLNotification manager].isConnected) {
         
         // check configuration passed by javascript
         if ([command.arguments count] > 0) {
@@ -54,19 +54,12 @@
                 NSString *log = [NSString stringWithFormat:@"info: blinco communication payload sent to %@",target.deviceID];
                 CDVPluginResult *commandResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:log];
                 [self.commandDelegate sendPluginResult:commandResult callbackId:command.callbackId];
-            } else {
-                CDVPluginResult *commandResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"error: message and target required"];
-                [self.commandDelegate sendPluginResult:commandResult callbackId:command.callbackId];
-            }
-        } else {
-            CDVPluginResult *commandResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"error: message and target required"];
-            [self.commandDelegate sendPluginResult:commandResult callbackId:command.callbackId];
-        }
-    } else {
-        NSLog(@"fatal error: can't send blinco messages if blinco is not initialized");
-        CDVPluginResult *commandResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"error: blinco must be initialized before calling blinco communication!"];
-        [self.commandDelegate sendPluginResult:commandResult callbackId:command.callbackId];
-    }
+                
+            } else [self failWithMessage:@"error: message and target required" toCallback:command.callbackId];
+        } else [self failWithMessage:@"error: message and target required" toCallback:command.callbackId];
+        
+    } else [self failWithMessage:@"fatal error: can't send blinco messages if blinco is not initialized and blinco conn is not connected" toCallback:command.callbackId];
+    
     
     
 }
@@ -94,6 +87,23 @@
         
     }
     
+}
+
+/* SEND SUCCESS OR FAIL MESSAGES */
+
+-(void)successWithMessage:(NSString *)message toCallback:(NSString*) callbackId
+{
+    if(callbackId == nil) callbackId = self.callbackId;
+    CDVPluginResult *commandResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:message];
+    [self.commandDelegate sendPluginResult:commandResult callbackId:callbackId];
+    
+}
+
+-(void)failWithMessage:(NSString *)message toCallback:(NSString*) callbackId
+{
+    if(callbackId == nil) callbackId = self.callbackId;
+    CDVPluginResult *commandResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:message];
+    [self.commandDelegate sendPluginResult:commandResult callbackId:callbackId];
 }
 
 @end

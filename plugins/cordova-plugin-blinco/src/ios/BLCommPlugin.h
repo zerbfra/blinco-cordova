@@ -11,7 +11,6 @@
 
 @interface BLCommPlugin : CDVPlugin
 
-
 @property (nonatomic, copy) NSString *callbackId;
 
 - (void) connect:(CDVInvokedUrlCommand*) command;
