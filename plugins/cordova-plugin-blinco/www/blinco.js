@@ -6,26 +6,25 @@ var blinco = {
     * config takes 4 mandatory keys: app_name, app_id, app_secret and ble_service
     */
     init: function (config, successCallback, errorCallback) {
-
-        console.log("info: init blinco");
+        console.log("info-js: init blinco");
         cordova.exec(successCallback,errorCallback,"Blinco","init",[ config ]);
     },
 
     /** Start detection of nearby devices, return an array of device objects (use JSON) */
     start: function (successCallback, errorCallback) {
-        console.log("info: starting blinco");
+        console.log("info-js: starting blinco");
         cordova.exec(successCallback,errorCallback,"Blinco","start",[ ]);
     },
 
     /** Stop detection of nearby devices */
     stop: function (successCallback, errorCallback) {
-        console.log("info: stopping blinco");
+        console.log("info-js: stopping blinco");
         cordova.exec(successCallback,errorCallback,"Blinco","stop",[ ]);
     },
 
     /** Reset discovered devices, if start was previously called, after resetting it refresh the available nearby devices */
     reset: function (successCallback, errorCallback) {
-        console.log("info: resetting blinco");
+        console.log("info-js: resetting blinco");
         cordova.exec(successCallback,errorCallback,"Blinco","reset",[ ]);
     }
 
