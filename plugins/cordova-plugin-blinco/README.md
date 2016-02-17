@@ -34,12 +34,6 @@
 
 You can find and extended example [here](../../www)
 
-## Background activity
-
-To enable background BLE discovery on iOS, pleae set the Xcode project Capabilities as the following image:
-![Xcode settings](./xcode-settings.png)
-
-
 ## API
 
 The plugin provides two different APIs in order to achieve different functionalities. 
@@ -139,3 +133,11 @@ To send the payload, simply:
         console.log(message);
     });
 ```
+
+## Background activity
+
+To enable background BLE discovery on iOS, pleae set the Xcode project Capabilities as the following image:
+
+![Xcode settings](./xcode-settings.png)
+
+When in background, the framework will call the same Blinco.start success callback on new devices discovery.
