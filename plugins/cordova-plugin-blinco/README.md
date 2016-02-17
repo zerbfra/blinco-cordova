@@ -34,6 +34,12 @@
 
 You can find and extended example [here](../../www)
 
+## Background activity
+
+To enable background BLE discovery on iOS, pleae set the Xcode project Capabilities as the following image:
+![Xcode settings](./xcode-settings.png)
+
+
 ## API
 
 The plugin provides two different APIs in order to achieve different functionalities. 
