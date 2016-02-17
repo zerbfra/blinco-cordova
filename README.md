@@ -23,7 +23,7 @@ Keep in mind that, every function called on the Blinco framework has this struct
 ```javascript
     Blinco.init(cnfg, function(success) {
         // this is the success callback function
-        console.log(success); // message contains log from the framework
+        console.log(JSON.stringify(success)); // in this particular instance it contains device_id
 
     }, function(error) {
         // this is the error callback function

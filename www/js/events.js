@@ -6,9 +6,10 @@ function initBlinco(callback) {
                 "app_secret":"b12868fe25a322726219017528d9873b97d8e0b1a90ea954923b050da0b54507",
                 "ble_service":"d8409b48-d49b-47f2-9844-a19ea7b10bc0" };
 
-    Blinco.init(cnfg, function(success) {
-        console.log(success);
-        // ok, blinco initialized - start it!
+    Blinco.init(cnfg, function(init_info) {
+        console.log(JSON.stringify(init_info));
+        // ok, blinco initialized - print device id and start
+        $("#me").html('<center>Device ID: '+init_info["device_id"]+'</center>');
         startBlinco();
 
     }, function(error) {

@@ -57,11 +57,14 @@ You can decide your own app name but you must register on the blinco server in o
 Then, you can init the Blinco framework instance by calling the method:
 
 ```javascript
-    Blinco.init(cnfg, function(message) {
-        console.log(message);
-        // handle framework start (here you can call Blinco.start)
-    }, function(message) {
-        // handle fail (print message)
+    Blinco.init(cnfg, function(init_info) {
+        console.log(JSON.stringify(init_info));
+        // ok, blinco initialized - print device id and start
+        console.log(init_info["device_id"]); // this is the device identifer of the current device
+        startBlinco();
+
+    }, function(error) {
+        console.log(error);
     });
     
 ```

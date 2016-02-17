@@ -83,13 +83,22 @@
 #pragma mark - Blinco delegate
 
 - (void) blincoInitialized:(BOOL)success {
+    NSDictionary *result = @{};
+    CDVCommandStatus status = CDVCommandStatus_ERROR;
+    
     if(success) {
         NSLog(@"info: Blinco was initialized with success");
-        [self successWithMessage:@"info: Blinco was initialized with success" toCallback:self.inId];
+        // create a dictionary to pass to js
+        NSString *deviceID = [DeviceManager shared].thisDevice.deviceID;
+        result = @{@"success":[NSNumber numberWithBool:true], @"device_id": deviceID};
+        status = CDVCommandStatus_OK;
     } else {
         NSLog(@"error: Blinco can't initialize");
-        [self failWithMessage:@"error: Blinco can't be initialized" toCallback:self.inId];
+        result = @{@"success":[NSNumber numberWithBool:false], @"device_id": [NSNull null]};
+        
     }
+    CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:status messageAsDictionary:result];
+    [self.commandDelegate sendPluginResult:pluginResult callbackId:self.inId];
     
 }
 
